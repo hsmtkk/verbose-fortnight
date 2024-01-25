@@ -3,8 +3,8 @@ import { ItemModel } from "@/app/utils/schemaModels"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
+    const reqJson = await req.json()
     try {
-        const reqJson = await req.json()
         await connectDB()
         const allItems = ItemModel.create(reqJson)
         return NextResponse.json({ message: "アイテム作成成功" })
