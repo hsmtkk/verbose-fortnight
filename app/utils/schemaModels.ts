@@ -10,4 +10,4 @@ const ItemSchema = new Schema({
     email: String,
 })
 
-export const ItemModel = mongoose.models.Items || mongoose.model("Item", ItemSchema)
+export const ItemModel = mongoose.models.Item || mongoose.model("Item", ItemSchema)
