@@ -6,8 +6,8 @@ export async function POST(req: NextRequest) {
     const reqJson = await req.json()
     try {
         await connectDB()
-        const newUser = UserModel.create(reqJson)
-        return NextResponse.json({ message: "ユーザー登録成功", newUser })
+        await UserModel.create(reqJson)
+        return NextResponse.json({ message: "ユーザー登録成功" })
     } catch (err) {
         console.log(err)
         return NextResponse.json({ message: "ユーザー登録失敗" }, { status: 500 })

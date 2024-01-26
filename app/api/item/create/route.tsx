@@ -6,8 +6,8 @@ export async function POST(req: NextRequest) {
     const reqJson = await req.json()
     try {
         await connectDB()
-        const newItem = ItemModel.create(reqJson)
-        return NextResponse.json({ message: "アイテム作成成功", newItem })
+        await ItemModel.create(reqJson)
+        return NextResponse.json({ message: "アイテム作成成功" })
     } catch (err) {
         console.log(err)
         return NextResponse.json({ message: "アイテム作成失敗" }, { status: 500 })
