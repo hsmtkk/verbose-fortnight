@@ -1,15 +1,15 @@
 import connectDB from "@/app/utils/database"
-import { ItemModel } from "@/app/utils/schemaModels"
+import { UserModel } from "@/app/utils/schemaModels"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
     const reqJson = await req.json()
     try {
         await connectDB()
-        const newItem = ItemModel.create(reqJson)
-        return NextResponse.json({ message: "アイテム作成成功", newItem })
+        const newUser = UserModel.create(reqJson)
+        return NextResponse.json({ message: "ユーザー登録成功", newUser })
     } catch (err) {
         console.log(err)
-        return NextResponse.json({ message: "アイテム作成失敗" }, { status: 500 })
+        return NextResponse.json({ message: "ユーザー登録失敗" }, { status: 500 })
     }
 }
