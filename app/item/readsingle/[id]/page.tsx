@@ -1,3 +1,6 @@
+import { Spacer } from "@nextui-org/react"
+import Image from "next/image"
+
 interface Item {
     _id: string,
     title: string,
@@ -18,7 +21,13 @@ export default async function Page({ params }: { params: { id: string } }) {
     const singleItem = await getSingleItem(id)
     return (
         <>
-            {singleItem.title}
+            <Image src={singleItem.image} alt={singleItem.title} width={750} height={500} loading="lazy" />
+            <ul>
+                <li>{singleItem.title}</li>
+                <li>{singleItem.price}</li>
+                <Spacer />
+                <li>{singleItem.description}</li>
+            </ul>
         </>
     )
 }
