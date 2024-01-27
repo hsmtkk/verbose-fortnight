@@ -1,5 +1,6 @@
-import { Spacer } from "@nextui-org/react"
+import { Button, Spacer } from "@nextui-org/react"
 import Image from "next/image"
+import Link from "next/link"
 
 interface Item {
     _id: string,
@@ -28,6 +29,10 @@ export default async function Page({ params }: { params: { id: string } }) {
                 <Spacer />
                 <li>{singleItem.description}</li>
             </ul>
+            <Spacer />
+            <Button as={Link} href={`/item/update/${id}`} >編集</Button>
+            <Spacer />
+            <Button as={Link} href={`/item/delete/${id}`} >削除</Button>
         </>
     )
 }
